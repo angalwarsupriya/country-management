@@ -3,7 +3,8 @@ import './index.css'
 function DisplayEmptyView({message}) {
   return (
     <div className='empty-view-bg-con'>
-          <p>{message}</p>  
+      <img className='no-data-img' src='/images/nodata.jpg' alt='no data'/>
+      <p>{message}</p>  
     </div>
   )
 }

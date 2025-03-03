@@ -1,16 +1,28 @@
-.App {
-  text-align: center;
+.app {
+  height: 100vh;
+  width: 100vw;
+  padding: 20px;
 }
 .h1{
   margin-left: 50px;
+  text-align: center;
   margin-bottom: 0px;
+  color: blueviolet;
+  letter-spacing: 1px;
+   font-weight: bold; /* Make the text bold (optional) */
+   background: linear-gradient(to right, rgb(232, 6, 172), rgb(195, 0, 255), #042de2, rgb(87, 193, 216),rgb(0, 208, 255)); /* Define your gradient colors */
+   -webkit-background-clip: text; /* Use the background as the text's clipping mask */
+   -webkit-text-fill-color: transparent; /* Set the text fill color to transparent */
+   background-clip: text; /* Required for Firefox */
+   text-fill-color: transparent; /* Required for Firefox */
 }
 body {
   font-family: Roboto;
   margin: 0;
   padding: 0;
+  font-size: 20px;
   background-color: #ffffff;
-  
+  box-sizing: border-box;
 }
 
 h1, h2 {

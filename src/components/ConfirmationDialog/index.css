@@ -26,16 +26,19 @@
     margin-bottom: 60px;
     font-weight: bold;
     text-align: center;
+    line-height: 30px;
+    margin-bottom: 25px;
 
 }
 .btn1{
     margin-right: 20px;
     background-color: transparent;
     border: 2px solid;
-    border-color: rgb(162, 0, 255);
+    border-color: rgb(0, 132, 255);
     font-size: 15px;
     color: black;
     font-weight: 700;
+    margin-left: 10%;
 }
 .btn2{
     background-color: transparent;
@@ -44,4 +47,5 @@
     font-size: 15px;
     font-weight: 700;
     color: black;
+    margin-right: 10%;
 }

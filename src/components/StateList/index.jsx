@@ -73,7 +73,8 @@ const StateList = ({ countries, addStatesToCountries,  editStateName, deleteStat
  
   return (
     <section className='states-bg-con'>
-      <h1>{countryName} - States</h1>
+      <div>
+      <h2>{countryName} - States</h2>
       <form onSubmit={handleStateSubmit}>
         <input
           type="text"
@@ -85,6 +86,8 @@ const StateList = ({ countries, addStatesToCountries,  editStateName, deleteStat
         />
         <button type="submit">Add State</button>
       </form>
+      </div>
+      
       <div className='display-states-con'>
         {displayResultsBasedOnStatesLength()}
       </div>

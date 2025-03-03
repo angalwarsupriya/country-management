@@ -1,11 +1,15 @@
 .countries-list-bg-con{
-    height: 90vh;
-    width: 100vw;
+    height: 90%;
     padding: 50px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction:column ;
+    align-items: start;
 }
 .contries-display-ul-con{
-    height: 80vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    margin-top: 20px;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
@@ -13,11 +17,12 @@
     padding-top: 30px;
     overflow-y: scroll;
 }
-
-
+form{
+    margin-left: 2%;
+}
 
 input{
-    height: 30px;
+    height: 42px;
     width: 300px;
     font-size: 16px;
     padding: 4px;
@@ -25,6 +30,7 @@ input{
     margin-right: 20px;
     border-radius: 10px;
     padding-left: 10px;
+    display: inline;
 }
 button{
     height: 40px;
@@ -34,4 +40,8 @@ button{
     color: white;
     border: none;
     font-size: 16px;
+}
+form{
+    display: flex;
+    flex-direction: row;
 }

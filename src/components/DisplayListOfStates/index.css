@@ -2,3 +2,16 @@
     height: 100%;
     width: 100%;
 }
+.li{
+    text-decoration: none;
+    color: rgb(27, 67, 228);
+    font-size: 18px;
+}
+.li:hover{
+   color: #8f04ba;
+}
+h4{
+    font: 20px sans-serif;
+    color: #8f04ba;
+    font-weight: bold;
+}

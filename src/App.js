@@ -10,24 +10,25 @@ import './App.css';
 
 //import contriesData from './data/countriesData'
 const preData = [
-  {countryName: 'South Georgia', flagURL: 'https://flagcdn.com/48x36/gs.png'},
-  {countryName: 'Grenada', flagURL: 'https://flagcdn.com/48x36/gd.png'},
-  {countryName: 'Switzerland', flagURL: 'https://flagcdn.com/48x36/ch.png'},
-  {countryName: 'Sierra Leone', flagURL: 'https://flagcdn.com/48x36/sl.png'},
-  {countryName: 'Hungary', flagURL: 'https://flagcdn.com/48x36/hu.png'},
-  {countryName: 'Taiwan', flagURL: 'https://flagcdn.com/48x36/tw.png'},
-  {countryName: 'Wallis and Futuna', flagURL: 'https://flagcdn.com/48x36/wf.png'},
-  {countryName: 'Barbados', flagURL: 'https://flagcdn.com/48x36/bb.png'}, 
-  {countryName: 'Pitcairn Islands', flagURL: 'https://flagcdn.com/48x36/pn.png'}, 
-  {countryName: 'Ivory Coast', flagURL: 'https://flagcdn.com/48x36/ci.png'} ,
-  {countryName: 'Tunisia', flagURL: 'https://flagcdn.com/48x36/tn.png'}, 
+  {id:1, countryName: 'South Georgia', flagURL: 'https://flagcdn.com/48x36/gs.png'},
+  {id:2, countryName: 'Grenada', flagURL: 'https://flagcdn.com/48x36/gd.png'},
+  {id:3, countryName: 'Switzerland', flagURL: 'https://flagcdn.com/48x36/ch.png'},
+  {id:4, countryName: 'Sierra Leone', flagURL: 'https://flagcdn.com/48x36/sl.png'},
+  {id:5, countryName: 'Hungary', flagURL: 'https://flagcdn.com/48x36/hu.png'},
+  {id:6, countryName: 'Taiwan', flagURL: 'https://flagcdn.com/48x36/tw.png'},
+  {id:7, countryName: 'Wallis and Futuna', flagURL: 'https://flagcdn.com/48x36/wf.png'},
+  {id:8, countryName: 'Barbados', flagURL: 'https://flagcdn.com/48x36/bb.png'}, 
+  {id:9, countryName: 'Pitcairn Islands', flagURL: 'https://flagcdn.com/48x36/pn.png'}, 
+  {id:10, countryName: 'Ivory Coast', flagURL: 'https://flagcdn.com/48x36/ci.png'} ,
+  {id:11, countryName: 'Tunisia', flagURL: 'https://flagcdn.com/48x36/tn.png'}, 
 ]
 
 function App() {
+  // managing main data by using useState
   const [countries, setCountries] = useState(preData);
-  
   const [countriesData, setCountriesData] = useState([]);
 
+  // useEffect TO get the countries list name with flag urls
   useEffect(() => {
     const getCountriesData = async () => {
       const data = await fetchCountries();
@@ -36,6 +37,44 @@ function App() {
     getCountriesData();
   }, []);
   
+  console.log(countries)
+  // managing countries  logic like ADD, EDIT and DELETE Country
+  const deleteCountry = (idName) => {
+    const remainingCountriesList = countries.filter((each, index) => (
+      index !== idName
+    ))
+    setCountries(remainingCountriesList)
+  }
+const editCountryName = (countryId, newCountryName) => {
+  console.log(countryId, newCountryName);
+
+  const countryMatchedData = countriesData.find(
+    (eachOne) => eachOne.countryName.toLowerCase() === newCountryName.toLowerCase()
+  );
+
+  if (!countryMatchedData) {
+    console.error('Country not found in the predefined list.');
+    return;
+  }
+
+  // Update the country list with the new country name and flag URL
+  const newUpdatedCountriesList = countries.map((eachCoun) => {
+    if (eachCoun.id === countryId) {
+      return {
+        ...eachCoun,
+        countryName: countryMatchedData.countryName,
+        flagURL: countryMatchedData.flagURL,
+      };
+    }
+    return eachCoun;
+  });
+
+  // Set the updated countries list
+  setCountries(newUpdatedCountriesList);
+};
+
+  
+  // managing states of counties logic like ADD, EDIT and DELETE States
   const addStatesToCountries = (stateName, countryNameId) => {
     const newUpdatedCountriesList = countries.map((eachCountry) => {
       if (eachCountry.countryName.toLowerCase() === countryNameId.toLowerCase()) {
@@ -48,10 +87,9 @@ function App() {
       }
       return eachCountry;
     });
-    console.log(newUpdatedCountriesList)
     setCountries(newUpdatedCountriesList);
   };
-
+  
   const editStateName = (countryName, stateId, newStateName) => {
     const updatedCountries = countries.map((country) => {
       if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
@@ -81,44 +119,9 @@ function App() {
     setCountries(updatedCountries);
   };
   
-  const deleteCountry = (idName) => {
-    const remainingCountriesList = countries.filter((each, index) => (
-      index !== idName
-    ))
-    setCountries(remainingCountriesList)
-  }
-  
 
-  const editCountryName = (countryId,newCountryName) => {
-    console.log(countryId, newCountryName)
   
-    const countryMatchedData = countriesData.find(
-      (eachOne) => eachOne.countryName.toLowerCase() === newCountryName.toLowerCase()
-    );
-  
-    if (!countryMatchedData) {
-      console.error('Country not found in the predefined list.');
-      return;
-    }
-  
-    // Update the country list with the new country name and flag URL
-    const newUpdatedCountriesList = countries.map((eachCoun) => {
-      if (eachCoun.countryName.toLowerCase() === newCountryName.toLowerCase()) {
-        return {
-          ...eachCoun,
-          countryName: countryMatchedData.countryName,
-          flagURL: countryMatchedData.flagURL,
-        };
-      }
-      return eachCoun;
-    });
-    
-    // Set the updated countries list
-    console.log(newUpdatedCountriesList, 'Updated Countries List');
-    setCountries(newUpdatedCountriesList);
-  }
-
-  // manage cities data and logics
+  // manage cities data and logics like ADD, EDIT and DELETE Cities
   const addCitiesToState = (cityName, countryName, stateName) => {
     const updatedCountries = countries.map((country) => {
       if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
@@ -156,7 +159,6 @@ function App() {
       }
       return country;
     });
-    console.log(updatedCountries,'updated')
     setCountries(updatedCountries);
   };
 
@@ -178,16 +180,21 @@ function App() {
     setCountries(updatedCountries);
   };
 
+  // starting returning UI
   return (
     <Router>
       <div className="app">
-        <h1 className='h1'>Country Management</h1>
+      <h1 className='h1'>Country, State, and  City Management</h1>
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <CountryList countries={countries} setCountries={setCountries} deleteCountry={deleteCountry} editCountryName={editCountryName} />
+                <CountryList
+                  countries={countries}
+                  setCountries={setCountries}
+                  deleteCountry={deleteCountry} 
+                  editCountryName={editCountryName} />
               </>
             }
           />

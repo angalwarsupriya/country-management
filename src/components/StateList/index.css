@@ -3,6 +3,9 @@
     width: 100vw;
     padding: 50px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 .display-states-con{
     height: 80%;
@@ -10,7 +13,7 @@
 }
 .states-display-ul-con{
     height: 100%;
-    width: 100%;
+    width: 99%;
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
@@ -51,4 +54,15 @@
     color: white;
     margin-left: 20px;
     border: none;
+}
+h2{
+    font-weight: bold; /* Make the text bold (optional) */
+    background: linear-gradient(to right, rgb(187, 16, 127), rgb(176, 6, 227), rgb(0, 162, 255)); /* Define your gradient colors */
+    -webkit-background-clip: text; /* Use the background as the text's clipping mask */
+    -webkit-text-fill-color: transparent; /* Set the text fill color to transparent */
+    background-clip: text; /* Required for Firefox */
+    text-fill-color: transparent; /* Required for Firefox */
+    font-size: 25px;
+    text-decoration: underline;
+    margin-left: 20px;
 }

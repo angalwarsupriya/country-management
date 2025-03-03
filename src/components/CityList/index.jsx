@@ -141,7 +141,7 @@ const CityList = ({ countries, addCitiesToState, editCityName, deleteCity }) => 
 
   return (
     <section className='cities-bg-con'>
-      <h1>{stateName} - Cities</h1>
+      <h2>{stateName} - Cities</h2>
       <form onSubmit={handleCitySubmit}>
         <input
           type="text"

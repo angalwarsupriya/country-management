@@ -14,7 +14,7 @@ function DisplayListOfStates({ states, onDeleteState, currentCountry, onEditStat
                     <button className='update-btnn' onClick={()=> onEditState(state)}>Update</button>
                     <button className='delete-btnn' onClick={() => onDeleteState(state)}>Delete</button>
                 </div>
-                <Link to={`/country/${countryNa}/state/${stateNa}`}>manage States</Link>
+                <Link className='li' to={`/country/${countryNa}/state/${stateNa}`}>manage States</Link>
             </li>
         ))}
         </ul>

@@ -1,6 +1,7 @@
 
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
+
 import { fetchCountries } from '../../data/countriesData';
 import CountryListItemCompo from '../CountryListCompo';
 import ConfirmationDialog from '../ConfirmationDialog';
@@ -10,7 +11,6 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
   const [countriesData, setCountriesData] = useState([]);
   
 
-  //;;;;;;;;;;;;;;;;;;;;;;;
   const [dialogMode, setDialogMode] = useState(false)
   const [dialogMessage, setDialogMessage] = useState('');
   const [countryId, setCountryId] = useState('')
@@ -25,7 +25,8 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
     };
     getCountriesData();
   }, []);
-
+  
+  // handling form(adding counties)
   const handleChange = (e) => {
     setCountryName(e.target.value);
   };
@@ -38,13 +39,15 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
     console.log(matchedCountry, 'matchedCountry');
 
     if (matchedCountry) {
-      setCountries([...countries, matchedCountry]);
+      const newCountry = { ...matchedCountry, id: Date.now() } 
+      setCountries([newCountry,...countries]);
     } else {
       alert('Country not found in the predefined list.');
     }
     setCountryName('');
   };
-
+  
+  // handling edit and delete methods
   const handleEdit = (index) => {
     setMode('EDIT')
     const newName = prompt('Enter new country name:', countries[index].countryName);
@@ -63,7 +66,7 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
     setCountryId(index)
   };
   
-
+ // Handling dialog logic
   const handleDialogCancel = () => {
     setDialogMode(false)
   }
@@ -76,6 +79,7 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
     }
     setDialogMode(false)
   }
+  // returning that UI
   return (
     <section className="countries-list-bg-con">
       <form onSubmit={handleSubmit} className="add-country-form">
@@ -95,7 +99,7 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
           <CountryListItemCompo
             key={index}
             countryDetails={countryDetails}
-            onEdit={() => handleEdit(index)}
+            onEdit={() => handleEdit(countryDetails.id)}
             onDelete={() => handleDelete(index)}
           />
         ))}
