@@ -1,7 +1,9 @@
 import React from 'react'
 import './index.css'
-function DisplayListOfStates({ states, onDeleteState, onEditState }) {
-  
+import { Link } from 'react-router-dom'
+function DisplayListOfStates({ states, onDeleteState, currentCountry, onEditState, }) {
+  const countryNa = currentCountry.countryName
+  const stateNa = states[0].stateName
   return (
     <div className='display-staes-list-con'>
         <ul className='states-display-ul-con'>
@@ -10,13 +12,14 @@ function DisplayListOfStates({ states, onDeleteState, onEditState }) {
                 <h4>{state.stateName}</h4>
                 <div className='btns-row-con'>
                     <button className='update-btnn' onClick={()=> onEditState(state)}>Update</button>
-                    <button className='delete-btnn' onClick={()=> onDeleteState(state)}>Delete</button>
+                    <button className='delete-btnn' onClick={() => onDeleteState(state)}>Delete</button>
                 </div>
+                <Link to={`/country/${countryNa}/state/${stateNa}`}>manage States</Link>
             </li>
         ))}
         </ul>
     </div>
   )
 }
-
+/*/country/:countryName/state/:stateName*/
 export default DisplayListOfStates

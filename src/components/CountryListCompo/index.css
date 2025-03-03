@@ -28,6 +28,7 @@ h2{
 }
 .btns-row-con{
     display: flex;
+    margin-bottom: 20px;
 }
 .update-btn{
     height: 30px;

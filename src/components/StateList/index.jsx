@@ -67,7 +67,7 @@ const StateList = ({ countries, addStatesToCountries,  editStateName, deleteStat
     if (!currentCountry || !currentCountry.states || currentCountry.states.length === 0) {
       return <DisplayEmptyView message={message} />;
     } else {
-      return <DisplayListOfStates states={currentCountry.states} onDeleteState={onDeleteState} onEditState={onEditState} />;
+      return <DisplayListOfStates states={currentCountry.states} currentCountry={currentCountry} onDeleteState={onDeleteState} onEditState={onEditState} />;
     }
   };
  

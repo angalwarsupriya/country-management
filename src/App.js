@@ -112,11 +112,72 @@ function App() {
       }
       return eachCoun;
     });
-  
+    
     // Set the updated countries list
     console.log(newUpdatedCountriesList, 'Updated Countries List');
     setCountries(newUpdatedCountriesList);
   }
+
+  // manage cities data and logics
+  const addCitiesToState = (cityName, countryName, stateName) => {
+    const updatedCountries = countries.map((country) => {
+      if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
+        const updatedStates = country.states.map((state) => {
+          if (state.stateName.toLowerCase() === stateName.toLowerCase()) {
+            const updatedCities = [...(state.cities || []), { id: Date.now(), cityName }];
+            return { ...state, cities: updatedCities };
+          }
+          return state;
+        });
+        return { ...country, states: updatedStates };
+      }
+      return country;
+    });
+    setCountries(updatedCountries);
+  };
+
+  const editCityName = (countryName, stateName, cityId, newCityName) => {
+    console.log(countryName, stateName, cityId, newCityName, ';;;;;;')
+    const updatedCountries = countries.map((country) => {
+      if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
+        const updatedStates = country.states.map((state) => {
+          if (state.stateName.toLowerCase() === stateName.toLowerCase()) {
+            const updatedCities = state.cities.map((city) => {
+              if (city.id === cityId) {
+                return { ...city, cityName: newCityName };
+              }
+              return city;
+            });
+            return { ...state, cities: updatedCities };
+          }
+          return state;
+        });
+        return { ...country, states: updatedStates };
+      }
+      return country;
+    });
+    console.log(updatedCountries,'updated')
+    setCountries(updatedCountries);
+  };
+
+  const deleteCity = (countryName, stateName, cityId) => {
+    const updatedCountries = countries.map((country) => {
+      if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
+        const updatedStates = country.states.map((state) => {
+          if (state.stateName.toLowerCase() === stateName.toLowerCase()) {
+            const updatedCities = state.cities.filter((city) => city.id !== cityId);
+            return { ...state, cities: updatedCities };
+          }
+          return state;
+        });
+        return { ...country, states: updatedStates };
+      }
+      return country;
+    });
+
+    setCountries(updatedCountries);
+  };
+
   return (
     <Router>
       <div className="app">
@@ -137,7 +198,14 @@ function App() {
               editStateName={editStateName} 
               deleteState={deleteState}
             />} />
-          <Route path="/country/:countryName/state/:stateName" element={<CityList countries={countries} />} />
+          <Route path="/country/:countryName/state/:stateName" element={
+            <CityList
+              countries={countries}
+              addCitiesToState={addCitiesToState}
+              editCityName={editCityName}
+              deleteCity={deleteCity} 
+            />}
+          />
         </Routes>
       </div>
     </Router>
