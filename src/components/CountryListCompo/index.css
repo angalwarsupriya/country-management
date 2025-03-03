@@ -1,0 +1,51 @@
+.country-list-li-con{
+    height: 250px;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    border:1px solid gray;
+    padding: 10px;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-left: 0px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px;
+}
+.country-flag-img-con{
+    height: 70%;
+    width: 60%;
+}
+img{
+    height: 80%;
+    width: 100%;
+}
+h2{
+    font: 20px;
+    margin-top: 0px;
+}
+.btns-row-con{
+    display: flex;
+}
+.update-btn{
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    background-color:  rgb(0, 204, 255);
+    color: white;
+    border: none;
+}
+.delete-btn{
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    background-color:  rgb(241, 10, 10);
+    color: white;
+    margin-left: 20px;
+    border: none;
+}
+button{
+    cursor: pointer;
+}
