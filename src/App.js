@@ -35,8 +35,52 @@ function App() {
     };
     getCountriesData();
   }, []);
+  
+  const addStatesToCountries = (stateName, countryNameId) => {
+    const newUpdatedCountriesList = countries.map((eachCountry) => {
+      if (eachCountry.countryName.toLowerCase() === countryNameId.toLowerCase()) {
+        return {
+          ...eachCountry,
+          states: eachCountry.states
+            ? [...eachCountry.states, { stateName, id: Date.now() }]
+            : [{ stateName, id: Date.now() }],
+        };
+      }
+      return eachCountry;
+    });
+    console.log(newUpdatedCountriesList)
+    setCountries(newUpdatedCountriesList);
+  };
 
+  const editStateName = (countryName, stateId, newStateName) => {
+    const updatedCountries = countries.map((country) => {
+      if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
+        const updatedStates = country.states.map((state) => {
+          if (state.id === stateId) {
+            return { ...state, stateName: newStateName }; // Update state name
+          }
+          return state;
+        });
+        return { ...country, states: updatedStates };
+      }
+      return country;
+    });
+  
+    setCountries(updatedCountries);
+  };
+  
 
+  const deleteState = (countryName, stateId) => {
+    const updatedCountries = countries.map((country) => {
+      if (country.countryName.toLowerCase() === countryName.toLowerCase()) {
+        const updatedStates = country.states.filter((index) => index.id !== stateId);
+        return { ...country, states: updatedStates };
+      }
+      return country;
+    });
+    setCountries(updatedCountries);
+  };
+  
   const deleteCountry = (idName) => {
     const remainingCountriesList = countries.filter((each, index) => (
       index !== idName
@@ -86,7 +130,13 @@ function App() {
               </>
             }
           />
-          <Route path="/country/:countryName" element={<StateList countries={countries} />} />
+          <Route path="/country/:countryName/states" element={
+            <StateList
+              countries={countries}
+              addStatesToCountries={addStatesToCountries}
+              editStateName={editStateName} 
+              deleteState={deleteState}
+            />} />
           <Route path="/country/:countryName/state/:stateName" element={<CityList countries={countries} />} />
         </Routes>
       </div>

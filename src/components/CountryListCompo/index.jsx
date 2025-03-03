@@ -17,6 +17,9 @@ function CountryListItemCompo({ countryDetails,onEdit, onDelete }) {
         <button className='update-btn' onClick={onEdit}>update</button>
         <button className='delete-btn' onClick={onDelete}>Delete</button>
       </div>
+      <Link to={`/country/${countryName}/states`}>
+        manage country
+      </Link>
     </li>
   )
 }

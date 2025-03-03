@@ -5,3 +5,17 @@
   margin-left: 50px;
   margin-bottom: 0px;
 }
+body {
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+h1, h2 {
+  font-weight: 700; /* Bold */
+}
+
+p, input, button {
+  font-weight: 400; /* Regular */
+}
