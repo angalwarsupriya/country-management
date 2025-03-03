@@ -8,9 +8,9 @@ const DisplayListOfCities = ({ cities, onEditCity, onDeleteCity }) => {
     <ul className="city-list">
       {cities.map((city, index) => (
         <li key={index} className="city-item">
-          {city.cityName}
-          <div className="city-actions">
-            <button onClick={() => onEditCity(city.id)} className="edit-btn">Edit</button>
+          <h4>{city.cityName}</h4>
+          <div className="btns-row-con">
+            <button onClick={() => onEditCity(city.id)} className="update-btn">Edit</button>
             <button onClick={() => onDeleteCity(city.id)} className="delete-btn">Delete</button>
           </div>
         </li>

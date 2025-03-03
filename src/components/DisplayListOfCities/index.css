@@ -2,12 +2,18 @@
 .city-list {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 90%;
+
 }
 
 .city-item {
   height: 150px;
   width: 250px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 8px;
@@ -15,6 +21,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #f9f9f9;
+  margin: 20px;
 }
 
 .city-item:hover {
@@ -23,7 +30,7 @@
 
 .city-actions {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
 }
 
 .edit-btn, .delete-btn {
