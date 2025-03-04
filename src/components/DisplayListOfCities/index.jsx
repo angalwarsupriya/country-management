@@ -20,6 +20,6 @@ const DisplayListOfCities = ({ cities, onEditCity, onDeleteCity,countryName, sta
     </ul>
   );
 };
-/*/country/:countryName/state/:stateName*/
+
 
 export default DisplayListOfCities;

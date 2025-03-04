@@ -11,7 +11,7 @@ function DisplayListOfStates({ states, onDeleteState, currentCountry, onEditStat
         <ul className='states-display-ul-con'>
           {states.map((state) => (
             <li key={state.id} className='states-list-li-con'>
-                <h4>{state.stateName}</h4>
+                <h4 className='h4'>{state.stateName}</h4>
                 <div className='btns-row-con'>
                     <button className='update-btn' onClick={()=> onEditState(state)}>Update</button>
                     <button className='delete-btn' onClick={() => onDeleteState(state)}>Delete</button>
