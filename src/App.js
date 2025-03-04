@@ -38,7 +38,6 @@ function App() {
     getCountriesData();
   }, []);
   
-  console.log(countries)
   // managing countries  logic like ADD, EDIT and DELETE Country
   const deleteCountry = (idName) => {
     const remainingCountriesList = countries.filter((each, index) => (

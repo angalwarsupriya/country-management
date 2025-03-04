@@ -32,6 +32,7 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
   };
 
   const handleSubmit = (e) => {
+    console.log(countryName)
     e.preventDefault();
     const matchedCountry = countriesData.find(
       (c) => c.countryName.toLowerCase() === countryName.toLowerCase()
@@ -49,8 +50,9 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
   
   // handling edit and delete methods
   const handleEdit = (index) => {
+    console.log(index)
     setMode('EDIT')
-    const newName = prompt('Enter new country name:', countries[index].countryName);
+    const newName = prompt('Enter new country name:');
     if (newName) {
       setNewCountryName(newName); // Store the new country name
       setCountryId(index)
@@ -72,6 +74,7 @@ const CountryList = ({ countries, setCountries ,deleteCountry,editCountryName}) 
   }
   const handleDialogConfirm = () => {
     if (mode === 'EDIT') {
+      console.log(countryId, newCountryName,'aaa')
       editCountryName(countryId,newCountryName)
     }
     else {
