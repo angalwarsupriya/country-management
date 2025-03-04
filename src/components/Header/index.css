@@ -1,0 +1,22 @@
+.header-bg-con{
+    height: 10vh;
+    width: 100vw;
+    padding: 5px;
+    background-color: rgb(243, 242, 242);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.logo{
+    height: 60px;
+    width: 100%;
+    
+}
+.sign-btn{
+    margin-right: 6%;
+}
+.l{
+    width: 70px;
+    margin-left: 6%;
+}

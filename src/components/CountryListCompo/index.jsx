@@ -6,7 +6,6 @@ function CountryListItemCompo({ countryDetails,onEdit, onDelete }) {
   const { 
     countryName
     , flagURL } = countryDetails;
-  console.log(countryDetails,'detaisl')
   return (
     <li className='country-list-li-con'>
       <h2 className='h2'>{countryName}</h2>

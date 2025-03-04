@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 function DisplayListOfStates({ states, onDeleteState, currentCountry, onEditState, }) {
   const countryNa = currentCountry.countryName
   const stateNa = states[0].stateName
+
+  console.log(stateNa,'kkk', stateNa)
   return (
     <div className='display-staes-list-con'>
         <ul className='states-display-ul-con'>
@@ -14,12 +16,13 @@ function DisplayListOfStates({ states, onDeleteState, currentCountry, onEditStat
                     <button className='update-btn' onClick={()=> onEditState(state)}>Update</button>
                     <button className='delete-btn' onClick={() => onDeleteState(state)}>Delete</button>
                 </div>
-                <Link className='li' to={`/country/${countryNa}/state/${stateNa}`}>manage States</Link>
+              <Link className='li' to={`/country/${countryNa}/state/${state.stateName}`}>manage States</Link>
+              <Link to='/'>Go Back</Link>
             </li>
         ))}
         </ul>
     </div>
   )
 }
-/*/country/:countryName/state/:stateName*/
+
 export default DisplayListOfStates

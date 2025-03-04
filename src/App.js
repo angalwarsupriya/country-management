@@ -7,6 +7,7 @@ import StateList from './components/StateList';
 import CityList from './components/CityList';
 import {fetchCountries} from './data/countriesData'
 import './App.css';
+import Header from './components/Header';
 
 //import contriesData from './data/countriesData'
 const preData = [
@@ -183,6 +184,7 @@ const editCountryName = (countryId, newCountryName) => {
   // starting returning UI
   return (
     <Router>
+      <Header/>
       <div className="app">
       <h1 className='h1'>Country, State, and  City Management</h1>
         <Routes>
